@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>자바스크립트_제어문_실습_cj몰</title>
+  <style>
+    .tab_con{
+      width: 500px;height: 500px;
+      border: 3px solid #000;
+      position: relative;
+    }
+    .tab_con > ul{
+      list-style:none;
+    }
+    .tab_con > ul > li{}
+    .tab_con > ul > li > a{
+      display: flex;
+      background-color: #0f0;
+    }
+    .tab_con > ul > li > a > img{
+      width: 90px;height: 90px;
+      position: absolute;
+      bottom: 30px;
+      left: 40%;
+    }
+    .tab_con > ul > li:first-child img{left: 100px;}
+    .tab_con > ul > li:nth-child(2) img{left: 200px;}
+    .tab_con > ul > li:last-child img{left: 300px;}
+    .tab_con div{
+      position: absolute;
+      left:90px; top: 40px;
+      
+      display: none;
+    }
+    .tab_con div img{
+      width: 300px; height: 300px;
+      /* border: 1px solid #000; */
+
+    }
+    .on > a > img{border: 1px solid violet;}
+    li.on div{display: block;}
+  </style>
+</head>
+<body>
+  <article class="tab_con">
+    <ul>
+      <li class="on">
+        <a href="#" title="사진1">
+          <img src="./images/48805151L.jpg" alt="사진1">
+        </a>
+        <div class="photo01">
+          <img src="./images/48805151L.jpg" alt="사진1">
+        </div>
+      </li>
+      <li>
+        <a href="#" title="사진2">
+          <img src="./images/48805151L1.jpg" alt="사진2">
+        </a>
+        <div class="photo01">
+          <img src="./images/48805151L1.jpg" alt="사진2">
+        </div>
+      </li>
+      <li>
+        <a href="#" title="사진3">
+          <img src="./images/48805151L2.jpg" alt="사진3">
+        </a>
+        <div class="photo01">
+          <img src="./images/48805151L2.jpg" alt="사진3">
+        </div>
+      </li>
+    </ul>
+  </article>
+
+  <script>
+    const tabList = document.querySelectorAll('.tab_con li');
+    for(let i=0; i<tabList.length; i++){
+      tabList[i].querySelector('a').addEventListener('click', function(e){
+        e.preventDefault();
+        for(let j=0; j<tabList.length; j++){
+          tabList[j].classList.remove('on');
+        }
+        this.parentNode.classList.add('on');
+      })
+    }
+  </script>
+</body>
+</html>

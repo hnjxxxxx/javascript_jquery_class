@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>01자바스크립트_문서출력하기</title>
+  <style>
+    .p01{background-color: #ccc;color: #00f;}
+    footer{background-color: #333;color: #fff;line-height: 60px;}
+    address{text-align: center; font-style: normal;}
+  </style>
+  <script>
+    // 1. document객체를 사용하여 문서내용 출력하기
+    document.write('<p class="p01">document객체로 내용 출력하기</p>')
+    //2. window객체를 사용하여 문서내용 출력하기
+    window.alert('내용을 다시 확인하세요.')
+    //3. console모드에서 내용 출력하기
+    console.log('20240328')
+    
+  </script>
+  <!-- 외부스크립 -->
+  <script src="./script/script.js" defer></script>
+  <!-- defer = 중간에 들어있는 스크립트에 잠깐대기 명령을 내리고 Html을 먼저 실행하게끔 한다. -->
+</head>
+<body>
+  <h2>01자바스크립트_문서출력하기</h2>
+  <p>자바스트립트에서는 다양한 방식으로 데이터를 출력하는 방법이 있습니다.</p>
+  <ol>
+    <li>document객체에 write메서드를 사용 - document.write('출력할내용');</li>
+    <li>window개체를 활용하여 메시지 띄우기 - window.alert('메시지 내용');</li>
+    <li>브라우저 개발자 모드의 console모드 - console.log('출력할 내용');</li>
+    <li>document객체의 innerHTML메서드로 내용 출력하기 - document.getElenmentById('아이디명').innerHTML='출력할 내용';</li>
+  </ol>
+  <footer id="footer"></footer>
+
+  <script>
+    //4. document객체의 innerHTML 메서드를 활용하여 문서내용 출력하기
+    document.getElementById('footer').innerHTML="<address>Copyright&copy 2024 000 allrights reseved.</address>";
+  </script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+@charset "utf-8";
+
+/* main.css */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+
+body{
+  font-family: 'Noto Sans KR','Nanum Godic', arial, sans-serif;
+  font-size: 0.75rem; /*1rem=100%=16px. 0.8rem=13px*/
+  color: #333;
+}
+a{text-decoration: none; color:#333;}
+header h1, main h2{
+  text-align: center;
+  padding:5px 0px;
+}
+main h2 img{
+  height: 70px;
+}
+.list01{}
+.list01 > li{
+  background-color: #f7a20f;
+  color:#fff;
+  border-bottom: 1px solid #fff;
+  line-height:40px;
+  font-weight:600px;
+  font-size: 1rem;
+  text-indent:10px;
+  display: block;
+
+}
+.list02 > li{
+  background-color: #347cf9;
+  color:#fff;
+  border-bottom: 1px solid #fff;
+  line-height:40px;
+  font-weight:600px;
+  font-size: 1rem;
+  text-indent:10px;
+  display: block;
+
+}
+ul a{
+  line-height:40px;
+  display:block;
+  font-size:0.9rem;
+  text-indent: 20px;
+  transition:0.2s;
+}
+ul a:hover{
+  /* text-decoration:underline; */
+  background-color: rgb(237, 228, 165);
+}
+.sub{
+  background-color: #e8e8e8;
+  display:none;
+}
+.sub li{border-bottom: 1px solid #cbcbcb;}
+i.fas{
+  float:right;
+  font-size:1.4rem;
+  padding:10px 0px 0px 0px;
+  margin-right:10px;
+}
+.act{
+  transform:rotate(180deg) translate(-10px, -10px) !important;
+}

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>베스킨라빈스 메인페이지-2단 내비게이션, 이미지 슬라이드</title>
+  <!-- css초기화 -->
+  <link rel="stylesheet" href="./css/reset.css" type="text/css">
+  <!-- common서식 -->
+  <link rel="stylesheet" href="./css/common.css" type="text/css">
+  <!-- 아이콘폰트주소 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" type="text/css">
+
+  <style>
+    main{position: relative; padding-top:46px;} /* 내비게이션 높이만큼 패딩탑 주기*/
+
+    /* 슬라이드 서식 */
+    .mslide{
+      /* width:1600px; height:697px; */
+      width:100%; height:80vh;
+      margin:0 auto;
+      overflow: hidden;
+      position:relative;
+      background-color: aqua;
+    }
+    /* .mslide ul{width:8000px; display: flex;} */
+    .mslide ul{width:500%; display: flex;}
+    /* .mslide ul li{width:1600px;} */
+    .mslide ul li{width:100%;}
+    .mslide ul li img{width:100%;} /* 반응형 이미지*/
+
+    /* 좌우버튼 서식 */
+    .mslide i.fas{
+      color:#fff;
+      padding:22px 30px;
+      border:3px solid #fff;
+      position:absolute;
+      top:46%;
+      font-size:40px;
+      border-radius:50%;
+      cursor:pointer;
+    }
+    .mslide i.fas:hover{
+      background:rgba(255,255,255,0.3);
+      border:3px solid rgba(255,255,255,0.3);
+    }
+    .mslide i.fa-angle-left{left:0px;}
+    .mslide i.fa-angle-right{right:0px;}
+
+    /* 콘트롤 버튼 서식 */
+    .c_btn{
+      display: flex;
+      justify-content: center;
+      position:absolute;
+      left:50%; bottom:5%;
+      transform:translateX(-50%);
+      z-index: 1000;
+    }
+    .c_btn ul{}
+    .c_btn > ul li{
+      width:15px; height:15px;border-radius: 50%;
+      background-color: #fff;
+      border:3px solid #000;
+      margin:0px 5px;
+    }
+  </style>
+</head>
+<body>
+  <!-- 상단헤더영역 -->
+  <header>
+    <div class="h_top">
+      <h1>
+        <a href="index.html" title="메인페이지로 바로가기">
+          <img src="./images/logo_baskinrobbins.png" alt="상단로고">
+        </a>
+      </h1>
+    </div>
+
+    <div class="h_bottom">
+      <nav>
+        <!-- login, join -->
+        <ul class="lnb">
+          <li><a href="login.html" title="로그인">login</a></li>
+          <li><a href="join.html" title="회원가입">join</a></li>
+        </ul>
+
+        <!-- main navigation -->
+        <ul class="gnb">
+          <li><a href="#" title="이달의 제품">flavor of the month</a>
+            <ul class="sub">
+              <li><a href="#" title="아이스크림">
+                <img src="./images/img_monthly_fom_220930.png" alt=""></a>
+              </li>
+            </ul>
+          </li>
+          <li><a href="#" title="메뉴">menu</a>
+            <ul class="sub">
+              <li><a href="#" title="아이스크림">아이스크림</a></li>
+              <li><a href="#" title="아이크림케이크">아이크림케이크</a></li>
+              <li><a href="#" title="음료">음료</a></li>
+              <li><a href="#" title="커피">커피</a></li>
+              <li><a href="#" title="디저트">디저트</a></li>
+            </ul>
+          </li>
+          <li><a href="#" title="영양성분">영양 성분 및 알레르기</a>
+            <ul class="sub">
+              <li><a href="#" title="아이스크림">아이스크림</a></li>
+              <li><a href="#" title="음료">음료</a></li>
+              <li><a href="#" title="커피">커피</a></li>
+            </ul>
+          </li>
+          <li><a href="#" title="이벤트">event</a>
+            <ul class="sub">
+              <li><a href="#" title="진행중인 이벤트">진행중인 이벤트</a></li>
+              <li><a href="#" title="당첨자 발표">당첨자 발표</a></li>
+            </ul>
+          </li>
+          <li><a href="#" title="스토어">store</a>
+            <ul class="sub">
+              <li><a href="#" title="매장찾기">매장찾기</a></li>
+              <li><a href="#" title="고객센터">고객센터</a></li>
+              <li><a href="#" title="단체주문">단체주문</a></li>
+            </ul>
+          </li>
+          <li><a href="#" title="소개">about</a>
+            <ul class="sub">
+              <li><a href="#" title="공지사항">공지사항</a></li>
+              <li><a href="#" title="보도자료">보도자료</a></li>
+              <li><a href="#" title="채용정보">채용정보</a></li>
+              <li><a href="#" title="점포설개문의">점포설개문의</a></li>
+              <li><a href="#" title="contact us">contact us</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 메인영역 -->
+  <main>
+    <article class="mslide">
+      <!-- 슬라이드 -->
+      <ul>
+        <li><a href="#" title=""><img src="./images/slide01.png" alt="슬라이드1"></a></li>
+        <li><a href="#" title=""><img src="./images/slide02.png" alt="슬라이드2"></a></li>
+        <li><a href="#" title=""><img src="./images/slide3.jpg" alt="슬라이드3"></a></li>
+        <li><a href="#" title=""><img src="./images/slide4.jpg" alt="슬라이드4"></a></li>
+        <li><a href="#" title=""><img src="./images/slide5.jpg" alt="슬라이드5"></a></li>
+      </ul>
+      <!-- 좌우버튼 -->
+      <i class="fas fa-angle-left"></i>
+      <i class="fas fa-angle-right"></i>
+      <!-- 콘트롤버튼 -->
+      <nav class="c_btn">
+        <ul>
+          <li class="act">&nbsp;</li>
+          <li>&nbsp;</li>
+          <li>&nbsp;</li>
+        </ul>
+      </nav>
+    </article>
+  </main>
+
+  <!-- 푸터영역 -->
+  <footer>
+    <address>Copyright&copy;2023 BRKOREA Company. All Rights Reserved.</address>
+  </footer>
+
+  <!-- 제이쿼리 라이브러리 -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+  <!-- 자바스크립트로 2단 내비게이션 구현하기 -->
+  <script>
+    //1. 변수선언
+    const gnb = document.querySelector('.h_bottom .gnb');
+    const h_bottom = document.querySelector('.h_bottom');
+
+    //2. gnb에 마우스 오버시 높이가 변하면서 서브가 보이게
+    //gnb.addEventListener('mouseenter',function(){
+     // h_bottom.style.height='326px'; //1방법
+      //this.style.height='326px'; //2방법 .gnb에 높이값 설정해놓고 해야. 46으로
+   // });
+
+    //마우스 아웃시 높이가 원대래도 46크기로 작아져야
+   // gnb.addEventListener('mouseleave',function(){
+     // h_bottom.style.height='46px'; //1방법
+      //this.style.height='46px'; //2방법
+    //});
+
+    // 방법2. 제이쿼리로 2단 메뉴 구현하기
+    $(document).ready(function(){
+
+      $(gnb).hover(function(){ //마우스 오버시
+        $(h_bottom).stop().animate({'height':'326px'},300);
+      },function(){ //마우스 아웃시
+        $(h_bottom).stop().animate({'height':'46px'},300);
+      });
+
+      //메인슬라이드 구현
+      //1. 마지막 li태그를 첫번째 li의 앞으로 이동한다( 5> 1 >2 >...)
+      $('.mslide > ul li:last-child').insertBefore('.mslide > ul li:first-child');
+      //2. 왼쪽으로 -1600px만큼 이동하여 1번이 가운데로 오도록 한다. (1번이 중앙 위치)
+      // $('.mslide ul').css('margin-left','-1600px');
+      $('.mslide > ul').css('margin-left','-100%');
+      //3. 좌측으로 움직이는 함수(상대값 기준)
+      function move_left(){
+        //1) 슬라이드 전체목록을 왼쪽으로 1칸 이동하고(5번사진을 맨앞으로 움직였기 때문에 5번사진이 기준 => -3600px이동해야)
+        // $('.mslide ul').stop().animate({'margin-left':'-3600px'},500, function(){
+        $('.mslide > ul').stop().animate({'margin-left':'-200%'},500, function(){
+          //2) 맨처음사진(5) 맨뒤로 이동 => 1 >2 >3 >4 >5 순
+          $('.mslide > ul li:first-child').insertAfter('.mslide > ul li:last-child');
+          //3) 슬라이드 위치 조정
+          //그냥 두면, 1,2 (-3600)만큼 이동(왜나햐면 5번이 뒤로가서 1번이 맨처음에 있기때문)
+          //-3600만큼 이동한 다음에(앞의 사진이 1장이 된 후엔), 슬라이드의 상대값 위치를 -1600이 되게 해야함
+          //$('.mslide ul').css('margin-left', '-1600px'); //2칸 밀린 위치를 오른쪽으로 다시 이동
+          $('.mslide > ul').css('margin-left', '-100%');
+        });
+      }
+      //4. 우측으로 움직이는 함수 (stop().animate를 넣어야 딱 한번만 실행(클릭하는 동안에는 animate가 딱 한번만 먹힘))
+      function move_right(){
+        //$('.mslide ul').stop().animate({'margin-left':'0px'},500,function(){
+        $('.mslide > ul').stop().animate({'margin-left':'0%'},500,function(){
+          $('.mslide > ul li:last-child').insertBefore('.mslide > ul li:first-child');
+          // $('.mslide ul').css('margin-left', '-1600px');
+          $('.mslide > ul').css('margin-left', '-100%');
+        });
+      }
+      
+      //5. setInterval객체를 사용하여 매4초마다 함수를 반복실행하여 슬라이드 자동으로 움직이게 한다
+      let Timer = setInterval(move_left, 4000);
+
+      //버튼변수
+      const l_btn = $('.mslide i.fa-angle-left');
+      const r_btn = $('.mslide i.fa-angle-right');
+
+      //클릭시 해당 방향의 함수를 호출하여 실행하기
+      l_btn.click(function(){
+        clearInterval(Timer);
+        move_right();
+      });
+      r_btn.click(function(){
+        clearInterval(Timer);
+        move_left();
+      });
+      //마우스를 빼면 다시 시간을 넣어 자동으로 움직이게 한다
+      $('.mslide i.fas').mouseleave(function(){
+        clearInterval(Timer); //모든 이벤트에 clearInterval을 넣어줘야 시간이 안살아있음
+        Timer = setInterval(move_left, 4000);
+      })
+    });
+  </script>
+
+
+
+</body>
+</html>

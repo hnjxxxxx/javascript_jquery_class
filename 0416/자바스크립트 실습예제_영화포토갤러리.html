@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>자바스크립트 실습예제_영화포토갤러리</title>
+  <!-- 초기화 -->
+  <link href="./css/reset.css" rel="stylesheet" type="text/css">
+  <!-- 아이콘폰트 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <style>
+    .total_wrap {
+      border: 3px solid #000;
+      width: 1000px; height: 1000px;
+      margin: 0px auto;
+      padding-top: 10px;
+    }
+
+    .total_wrap>.gallery {
+      width: 800px;
+      margin: 0 auto;
+      margin-bottom:155px;
+      position: relative;
+    }
+
+    /* 사진 번호 서식 */
+    .gallery>.p01 {
+      font-size: 20px;
+    }
+
+    /* title서식 */
+    .title_area,
+    .sub_area {
+      width: 100%;
+      height: 27px;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .user_btn {
+      margin-left: auto;
+      /* 오른쪽 끝으로 보내준다*/
+      transform: translateY(20px);
+    }
+
+    .sub_area>ul {
+      width: 100%;
+      height: 27px;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .sub_area>ul>li {
+      padding-right: 9px;
+      font-size: small;
+      font-weight: lighter;
+    }
+
+    /* 썸네일 목록 서식 */
+    .list_area {
+      width: 100%;
+      height: 74px;
+      display: inline-flex;
+      /* align-items: center; */
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+
+    /* display: flex;
+      flex-wrap: wrap; */
+    .list_area i {
+      padding: 24px 10px;
+      font-size: 26px;
+      color: #7a7979;
+    }
+
+    .list_area>i:hover {
+      cursor: pointer;
+    }
+
+    .list_photo {
+      width: 100%;
+      /* display: flex;
+      flex-wrap:wrap; */
+    }
+
+    .list_photo>li {
+      width: calc(100%/7);
+      height: 74px;
+      float: left;
+      position: relative;
+      box-sizing: border-box;
+    }
+
+    .list_photo>li:first-child {
+      border: 3px solid #f00;
+    }
+
+    .list_photo>li:hover {
+      cursor: pointer;
+      box-sizing: border-box;
+      border: 3px solid #f24443;
+    }
+
+    .list_photo>li>img {
+      width: 100%;
+      height: 100%;
+      box-sizing: border-box;
+      object-fit: cover;
+    }
+
+    /* 큰이미지 서식 */
+    .big_img_box {
+      width: 800px;
+      height: 600px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    #big_img {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* 좌우버튼 서식 */
+    /* #btn_left,
+    #btn_right {
+      width: 2%;
+      padding: 0px 10px;
+      padding-top: 40px;
+      background-color: #f3eeee;
+      border: 1px solid #b4b3b3;
+      text-align: center;
+      font-size: 20px;
+      cursor: pointer;
+    } */
+
+
+    /* #btn_left {
+      position: absolute;
+      top: 51px;
+      left: 7px;
+    }
+
+    #btn_right {
+      position: absolute;
+      top: 51px;
+      right: 16px;
+    } */
+
+    #btn_left2,
+    #btn_right2 {
+      width: 20px;
+      height: 60px;
+      padding: 0px 10px;
+      padding-top: 40px;
+      background-color: #626262;
+      color: #fff;
+      text-align: center;
+      font-size: 20px;
+    }
+
+    #btn_left2 {
+      position: absolute;
+      top: 250px;
+      left: 0px;
+    }
+
+    #btn_right2 {
+      position: absolute;
+      top: 250px;
+      right: 0px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="total_wrap">
+    <div class="gallery">
+      <div class="title_area">
+        <h2>포토</h2>
+        <p id="number"></p>
+        <div class="user_btn">
+          <input type="button" value="원본보기" class="button">
+          <input type="button" value="주소복사" class="button">
+        </div>
+      </div>
+
+      <div class="sub_area">
+        <ul>
+          <li>스틸컷</li>
+          <li>포스터</li>
+        </ul>
+      </div>
+      <div class="list_area">
+        <i class="fa-solid fa-chevron-left" id="btn_left"></i>
+        <ul class="list_photo">
+          <!-- li>img[src='./images/movie']*15 -->
+          <li><img src="./images/movie01.jpg" alt="사진"></li>
+          <li><img src="./images/movie02.jpg" alt="사진"></li>
+          <li><img src="./images/movie03.jpg" alt="사진"></li>
+          <li><img src="./images/movie04.jpg" alt="사진"></li>
+          <li><img src="./images/movie05.jpg" alt="사진"></li>
+          <li><img src="./images/movie06.jpg" alt="사진"></li>
+          <li><img src="./images/movie07.jpg" alt="사진"></li>
+          <li><img src="./images/movie08.jpg" alt="사진"></li>
+          <li><img src="./images/movie09.jpg" alt="사진"></li>
+          <li><img src="./images/movie10.jpg" alt="사진"></li>
+          <li><img src="./images/movie11.jpg" alt="사진"></li>
+          <li><img src="./images/movie12.jpg" alt="사진"></li>
+          <li><img src="./images/movie13.jpg" alt="사진"></li>
+          <li><img src="./images/movie14.jpg" alt="사진"></li>
+          <li><img src="./images/movie15.jpg" alt="사진"></li>
+        </ul>
+        <i class="fa-solid fa-chevron-right" id="btn_right"></i>
+      </div>
+    </div>
+    <!-- 큰사진 영역 -->
+    <div class="big_img_box">
+      <img src="./images/movie01.jpg" alt="사진" id="big_img">
+      <div id="btn_left2"><i class="fa-solid fa-chevron-left"></i></div>
+      <div id="btn_right2"><i class="fa-solid fa-chevron-right"></i></div>
+    </div>
+  </div>
+
+  <script>
+    // 변수선언
+    const big_img = document.getElementById('big_img');
+    let s_img = document.querySelectorAll('.list_photo li'); //썸네일이미지
+    let photo_array = ['movie01.jpg', 'movie02.jpg', 'movie03.jpg', 'movie04.jpg', 'movie05.jpg', 'movie06.jpg', 'movie07.jpg', 'movie08.jpg', 'movie09.jpg', 'movie10.jpg', 'movie11.jpg', 'movie12.jpg', 'movie13.jpg', 'movie14.jpg', 'movie15.jpg']
+
+    const btn_left = document.getElementById('btn_left');
+    const btn_right = document.getElementById('btn_right');
+    const btn_left2 = document.getElementById('btn_left2');
+    const btn_right2 = document.getElementById('btn_right2');
+    let count = 1;
+    let number = document.getElementById('number');
+    number.innerHTML = count+'/'+s_img.length; //1/15
+
+    // 이미지 변경, 숫자변경 함수
+    function imgChange(){
+      console.log(count);
+      //모든 서식 지우기
+      for(let j = 0; j < s_img.length; j++){
+        s_img[j].style.border = 'none';
+      }
+      //해당 인덱스번호에 서식 적용
+      s_img[count-1].style.border = '3px solid #f00';
+      //큰이미지 변경
+      big_img.src = `./images/${photo_array[count-1]}`;
+      //인덱스 번호 표시
+      number.innerHTML = count+'/'+s_img.length;
+    }
+
+    //썸네일 이미지 클릭 이벤트
+    for(let i = 0; i < s_img.length; i++){
+      s_img[i].addEventListener('click', function () {
+        //console.log(i);
+        count = i+1;
+        imgChange(count);
+      })
+    }
+
+    //버튼 조작 함수
+    function leftMove(){
+      if(count==1){
+        //console.log(count);
+        count = s_img.length;
+      }else{
+        count--;
+      }
+      imgChange(count);
+    }
+    function rightMove(){
+      if(count==s_img.length){
+        count = 1;
+      }else{
+        count++;
+      }
+      imgChange(count);
+    }
+    //버튼 클릭 이벤트
+    btn_left.addEventListener('click', function () {
+      leftMove();
+    })
+    btn_right.addEventListener('click', function () {
+      rightMove();
+    })
+    btn_left2.addEventListener('click', function () {
+      leftMove();
+    })
+    btn_right2.addEventListener('click', function () {
+      rightMove();
+    })
+  </script>
+</body>
+
+</html>

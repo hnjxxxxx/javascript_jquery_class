@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>실습_클래스 조작을 활용한 콘트롤버튼 이미지 슬라이드</title>
+  <!-- 아이콘폰트 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <style>
+    article * {
+      margin: 0px;
+      padding: 0px;
+    }
+
+    article {
+      width: 350px;
+      height: 450px;
+      border: 3px solid #000;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+    }
+
+    article h3 {
+      font-size: 30px;
+      color: orange;
+      padding: 10px 0px;
+    }
+
+    .slide {
+      width: 1400px;
+      display: flex;
+      position: relative;
+    }
+
+    .slide li {
+      width: 350px;
+      list-style: none;
+    }
+
+    .slide img {
+      width: 90%;
+    }
+
+    .c_btn {
+      transform: translateY(8px);
+    }
+
+    .c_btn span {
+      display: inline-block;
+      /* inline요소이므로 너비와 높이값이 안먹히므로, 나란히는 유지하기 위해(그냥 block (x)) */
+      width: 15px;
+      height: 15px;
+      border: 1px solid #000;
+      border-radius: 50%;
+    }
+
+    .act {
+      background-color: orange !important;
+    }
+
+    /* 콘트롤 버튼 */
+    i.fas {
+      color: #333;
+      font-size: 30px;
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+    }
+  </style>
+
+  <!-- 제이쿼리 라이브러리 연결 -->
+  <script src="./script/jquery-3.7.1.js"></script>
+  <!-- 제이쿼리 랩퍼 -->
+  <script>
+    $(document).ready(function () {
+
+      //1. 변수선언 
+      let c_btn = $('.c_btn span');
+      let img_w = 350;
+      let i = $('.c_btn span').index(); //인덱스값(버전에 따라 다르므로 주의!)
+      //console.log(i); //0
+
+      //2. 콘트롤버튼 클릭시 인덱스값 구하기
+      c_btn.click(function () {
+        i = $(this).index();
+        //console.log(i);
+
+        slide(i); //함수 호출
+      })
+      //5. 슬라이드 이동값, 콘트롤버튼 서식 적용 함수로 만들기
+      function slide(i) {
+        //3. 움직이는 이동값을 계산하여 이미지목록에 대입하여 움직이게 한다(css에 position 주는 것 잊지 말기!)
+        let move = -(img_w * i); //0, -350, -700, -1050
+        console.log(move);
+        $('.slide').animate({ 'left': move }, 300);
+
+        //4. 콘트롤버튼의 기존서식 제거하고
+        c_btn.removeClass('act');
+        //선택한 콘트롤버튼에 서식 적용
+        // $(this).addClass('act'); 함수로 만들었으므로 바꿔야...
+        c_btn.eq(i).addClass('act');
+      }
+
+      //6. 시간객체를 사용하여 매3초마다 slide함수를 반복호출한다
+      let Timer = setInterval(function () {
+        move();
+      }, 3000);
+      //인덱스값 구해서, slide 함수에 토스해주는 함수
+      function move() {
+        if (i == 3) { //인덱스번호가 3이면
+          i = 0; //0대입하여 처음사진 나오게
+        } else { //그렇지 않은 경우
+          i++; //1씩 증가하여 다음 사진 나오게
+        }
+        slide(i);
+      }
+
+      //7. 정지버튼 클릭시 시간을 제거
+      $('i.fa-pause').click(function () {
+        clearInterval(Timer);  //한번 더 확실하게 시간제거해주기
+        if ($(this).hasClass('fas fa-pause') == true) {
+          clearInterval(Timer);
+          $(this).attr('class', 'fas fa-play');
+        } else {
+          Timer = setInterval(function () {
+            move();
+          }, 3000);
+          $(this).attr('class', 'fas fa-pause');
+        }
+
+      })
+    });
+  </script>
+</head>
+
+<body>
+  <h2>실습_클래스 조작을 활용한 콘트롤버튼 이미지 슬라이드</h2>
+  <p>이미지 목록 4장을 활용하여 콘트롤버튼 클릭시 좌측으로 이동하는 슬라이드를 구현한다</p>
+
+  <ul>
+    <li>이미지 350픽셀 사진 4장을 목록태그로 가로배치(flex, inline, inline-block, float, grid)한다.</li>
+    <li>1번사진 아래쪽에 span태그를 사용하여 콘트롤 버튼 모양을 구현한다.</li>
+    <li>js나 제이쿼리에서 콘트롤 버튼 클릭시 각각 해당 인덱스값(i)를 구하여(0,1,2,3) 변수에 담는다.</li>
+    <li>콘트롤버튼 클릭시 나온 값을 통하여 연산수식에 -0,-350,-700,-1050값을 대입하여 슬라이드가 왼쪽으로 움직이게 한다.</li>
+    <li>콘트롤버튼에 적용할 'act'서식을 만들어서 클릭시 해당서식이 적용되게 하고, 그렇지 않는 콘트롤버튼에는 서식을 제거한다.</li>
+    <li>autoslide기능 추가 - setInterval 객체를 사용하여 매 3초마다 함수를 반복호출하여 자동실행</li>
+    <li>일시정지(pause) 버튼 클릭시 시간제거, play버튼 클릭시 자동재생(시간추가)하도록 한다.</li>
+  </ul>
+
+  <p>움직이는 이동값 = 0, -350, -700, -1050 을 콘트롤 버튼 클릭시 나오게 계산작업해야...</p>
+
+  <article>
+    <h3>신제품 출시</h3>
+    <ul class="slide">
+      <li><a href="#" title=""><img src="./images01/mcon3_2.png" alt=""></a></li>
+      <li><a href="#" title=""><img src="./images01/mcon3_3.png" alt=""></a></li>
+      <li><a href="#" title=""><img src="./images01/mcon3_4.png" alt=""></a></li>
+      <li><a href="#" title=""><img src="./images01/mcon3_5.png" alt=""></a></li>
+    </ul>
+    <div class="c_btn">
+      <span class="act">&nbsp;</span>
+      <span>&nbsp;</span>
+      <span>&nbsp;</span>
+      <span>&nbsp;</span>
+    </div>
+    <i class="fas fa-pause"></i>
+  </article>
+</body>
+
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>06실습예제_미에로화이바 메인슬라이드 구현하기</title>
+  <!-- 아이콘폰트 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <style>
+    *{margin:0px;padding:0px;}
+    ul, li{list-style: none;}
+    header{
+      width:100%;height:100px;
+      background-color: rgba(0, 0, 0, .3);
+      position:absolute; z-index:1000;
+    }
+    main{
+      /* position:absolute;top:0px;left:0px; */
+    }
+    .slide-container{
+      width:100%; height:100vh;overflow: hidden;
+      position:relative;
+    }
+    .slide-container img{width:100%;}
+    .lnb ul{
+      display: flex;
+      justify-content: center;
+      position:absolute; bottom:50px; left:50%;
+      transform:translateX(-50%);
+      z-index: 100;
+    }
+    .lnb li{
+      width:15px; height:15px;border-radius: 50%;
+      background-color: #fff;
+      margin:0px 5px;
+    }
+    .act{
+      width:30px !important;border-radius: 20px !important;
+      background-color: rgb(233, 128, 0) !important;
+    }
+
+    .slide-wrapper{width: 100%; height: 100vh;}
+    .slide-wrapper div{
+      position: absolute; /* 3 > 2 > 1 순으로 겹치게 된다 */
+      left:0px;top:0px;
+      width: 100%;
+    }
+    /* 순서 바로 잡기 */
+    .slide-wrapper div:first-child{z-index: 30;} /* 1 */
+    .slide-wrapper div:nth-child(2){z-index: 20;} /* 2 */
+    .slide-wrapper div:nth-child(3){z-index: 10;} /* 3 */
+
+    .slide-wrapper div img{width: 100%;}
+    /* 태블릿 해상도일 경우 */
+    @media screen and (min-width:768px) and (max-width:1024px){
+      .slide-wrapper div img{
+        height:100vh; object-fit: cover;
+      }
+    }
+    /* 모바일 해상도일 경우 */
+    @media screen and (max-width:768px){
+      .slide-wrapper div img{
+        height:100vh; object-fit: cover;
+        
+      }
+    }
+    /* 오토플레이, 정지 버튼 */
+    i.fas {
+      color: #fff;
+      font-size: 30px;
+      position: absolute;
+      right: 30px;
+      bottom: 45px;
+      z-index: 1000;
+    }
+  </style>
+
+  <!-- 1.제이쿼리 라이브러리 연결 -->
+  <script src="./script/jquery-3.7.1.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+  <!-- 2. 제이쿼리 랩퍼 -->
+  <script>
+    $(document).ready(function(){
+      //1. 변수선언
+      let i=$('.lnb li').index(); //인덱스값(초기값)
+      //console.log(i); //0
+      let slide = $('.slide-wrapper div');
+      let c_btn = $('.lnb li');
+
+      //2. 콘트롤버튼서식, 이미지가 변하는 함수
+      function fadeInOut(){
+        //1. 숨기기
+        c_btn.removeClass('act'); // 컨트롤버튼 서식 모두 지우고
+        slide.fadeOut(); //보이는 이미지 전부 숨기고
+
+        //2. 조건식 - 인덱스 번호 구하기 => move함수로 빼기
+        /*if(i==2){ // 만약 인덱스 값이 2라면(=마지막 이미지라면)
+          i=0; // 인덱스값을 0(=첫번째 이미지)로 대입하고
+        }else{ //그렇지 않으면
+          i++; //1씩 더하여 다음 이미지가 나오게 한다
+        }*/
+        
+        //3. 인덱스번호값 대입
+        slide.eq(i).fadeIn(); //인덱스번호에 해당하는 n번째 이미지가 나옴
+        c_btn.eq(i).addClass('act'); //인덱스번호에 해당하는 컨트롤버튼 서식 적용
+        
+      }
+
+      //3. 매3초마다 반복실행 => Timer
+      // let Timer = setInterval(함수명, 시간);
+      //let Timer = setInterval(fadeInOut, 3000);
+      let Timer = setInterval(move, 3000);
+
+      //4. 콘트롤버튼 클릭 이벤트
+      c_btn.click(function(){
+        clearInterval(Timer);
+        i=$(this).index();
+        console.log(i); //0,1,2
+        fadeInOut(i);
+      })
+      c_btn.mouseleave(function(){
+        clearInterval(Timer);
+        Timer = setInterval(move, 3000);
+      })
+      //5. 인덱스값 구하기 함수
+      function move(){
+        if(i==2){ // 만약 인덱스 값이 2라면(=마지막 이미지라면)
+          i=0; // 인덱스값을 0(=첫번째 이미지)로 대입하고
+        }else{ //그렇지 않으면
+          i++; //1씩 더하여 다음 이미지가 나오게 한다
+        }
+        fadeInOut(i);
+      }
+      //6. 정지버튼 클릭시 시간 제거
+      $('i.fa-pause').click(function(){
+        clearInterval(Timer);
+        if($(this).hasClass('fas fa-pause')==true){
+          clearInterval(Timer);
+          $(this).attr('class','fas fa-play');
+        }else{
+          Timer = setInterval(move, 3000);
+          $(this).attr('class','fas fa-pause');
+        }
+      })
+
+    })
+  </script>
+</head>
+<body>
+  <!-- 상단헤더영역 -->
+  <header></header>
+  <!-- 메인콘텐츠영역 -->
+  <main>
+    <article class="slide-container">
+      <nav class="lnb">
+        <ul>
+          <li class="act">&nbsp;</li>
+          <li>&nbsp;</li>
+          <li>&nbsp;</li>
+        </ul>
+      </nav>
+      <div class="slide-wrapper">
+        <div class="slide"><img src="./images/visual01.jpg" alt=""></div>
+        <div class="slide"><img src="./images/visual02.jpg" alt=""></div>
+        <div class="slide"><img src="./images/visual03.jpg" alt=""></div>
+      </div>
+      <i class="fas fa-pause"></i>
+    </article>
+  </main>
+  <!-- 푸터영역 -->
+  <footer></footer>
+</body>
+</html>
