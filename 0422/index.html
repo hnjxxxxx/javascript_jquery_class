@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,62 +10,105 @@
   <!-- common서식 -->
   <link rel="stylesheet" href="./css/common.css" type="text/css">
   <!-- 아이콘폰트주소 -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" type="text/css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    type="text/css">
 
   <style>
-    main{position: relative; padding-top:46px;} /* 내비게이션 높이만큼 패딩탑 주기*/
+    main {
+      position: relative;
+      padding-top: 46px; /* 내비게이션 높이만큼 패딩탑 주기*/
+    }
 
     /* 슬라이드 서식 */
-    .mslide{
+    .mslide {
       /* width:1600px; height:697px; */
-      width:100%; height:80vh;
-      margin:0 auto;
+      width: 100%;
+      height: 100vh;
+      margin: 0 auto;
       overflow: hidden;
-      position:relative;
+      position: relative;
       background-color: aqua;
     }
+    .mslide img{width:100%;}
+
     /* .mslide ul{width:8000px; display: flex;} */
-    .mslide ul{width:500%; display: flex;}
+    .mslide ul {
+      width: 500%;
+      display: flex;
+      position: relative;
+      background-color: #ff0;
+    }
+
     /* .mslide ul li{width:1600px;} */
-    .mslide ul li{width:100%;}
-    .mslide ul li img{width:100%;} /* 반응형 이미지*/
+    .mslide ul li {
+      width: 100%;
+    }
+
+    .mslide ul li img {
+      width: 100%;
+    }
+
+    /* 반응형 이미지*/
 
     /* 좌우버튼 서식 */
-    .mslide i.fas{
-      color:#fff;
-      padding:22px 30px;
-      border:3px solid #fff;
-      position:absolute;
-      top:46%;
-      font-size:40px;
-      border-radius:50%;
-      cursor:pointer;
+    .mslide i.fas {
+      color: #fff;
+      padding: 22px 30px;
+      border: 3px solid #fff;
+      position: relative;
+      
+      top: -20%;
+      font-size: 40px;
+      border-radius: 50%;
+      cursor: pointer;
     }
-    .mslide i.fas:hover{
-      background:rgba(255,255,255,0.3);
-      border:3px solid rgba(255,255,255,0.3);
+
+    .mslide i.fas:hover {
+      background: rgba(255, 255, 255, 0.3);
+      border: 3px solid rgba(255, 255, 255, 0.3);
     }
-    .mslide i.fa-angle-left{left:0px;}
-    .mslide i.fa-angle-right{right:0px;}
+
+    .mslide i.fa-angle-left {
+      left: 0px;
+    }
+
+    .mslide i.fa-angle-right {
+      right: 0px;
+      float: right;
+    }
 
     /* 콘트롤 버튼 서식 */
-    .c_btn{
+    .c_btn > ul{
       display: flex;
       justify-content: center;
-      position:absolute;
-      left:50%; bottom:5%;
-      transform:translateX(-50%);
+      position: relative;
+      left: 50%;
+      bottom: 50px;
+      transform: translateX(-50%);
       z-index: 1000;
+      /* background-color: #f00; */
     }
-    .c_btn ul{}
-    .c_btn > ul li{
-      width:15px; height:15px;border-radius: 50%;
+
+    .c_btn ul {
+      /* text-align: center; */
+    }
+
+    .c_btn>ul li {
+      display: inline-block;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
       background-color: #fff;
-      border:3px solid #000;
-      margin:0px 5px;
+      /* border:3px solid #000; */
+      margin: 0px 5px;
+    }
+
+    .act {
+      background-color: #f00 !important;
     }
   </style>
 </head>
+
 <body>
   <!-- 상단헤더영역 -->
   <header>
@@ -89,7 +133,7 @@
           <li><a href="#" title="이달의 제품">flavor of the month</a>
             <ul class="sub">
               <li><a href="#" title="아이스크림">
-                <img src="./images/img_monthly_fom_220930.png" alt=""></a>
+                  <img src="./images/img_monthly_fom_220930.png" alt=""></a>
               </li>
             </ul>
           </li>
@@ -141,11 +185,11 @@
     <article class="mslide">
       <!-- 슬라이드 -->
       <ul>
-        <li><a href="#" title=""><img src="./images/slide01.png" alt="슬라이드1"></a></li>
-        <li><a href="#" title=""><img src="./images/slide02.png" alt="슬라이드2"></a></li>
-        <li><a href="#" title=""><img src="./images/slide3.jpg" alt="슬라이드3"></a></li>
-        <li><a href="#" title=""><img src="./images/slide4.jpg" alt="슬라이드4"></a></li>
-        <li><a href="#" title=""><img src="./images/slide5.jpg" alt="슬라이드5"></a></li>
+        <li class="slide01"><a href="#" title=""><img src="./images/slide01.png" alt="슬라이드1"></a></li>
+        <li class="slide02"><a href="#" title=""><img src="./images/slide02.png" alt="슬라이드2"></a></li>
+        <li class="slide03"><a href="#" title=""><img src="./images/slide3.jpg" alt="슬라이드3"></a></li>
+        <li class="slide04"><a href="#" title=""><img src="./images/slide4.jpg" alt="슬라이드4"></a></li>
+        <li class="slide05"><a href="#" title=""><img src="./images/slide5.jpg" alt="슬라이드5"></a></li>
       </ul>
       <!-- 좌우버튼 -->
       <i class="fas fa-angle-left"></i>
@@ -154,6 +198,8 @@
       <nav class="c_btn">
         <ul>
           <li class="act">&nbsp;</li>
+          <li>&nbsp;</li>
+          <li>&nbsp;</li>
           <li>&nbsp;</li>
           <li>&nbsp;</li>
         </ul>
@@ -169,7 +215,7 @@
   <!-- 제이쿼리 라이브러리 -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
-  <!-- 자바스크립트로 2단 내비게이션 구현하기 -->
+  <!-- 방법1. 자바스크립트로 2단 내비게이션 구현하기 -->
   <script>
     //1. 변수선언
     const gnb = document.querySelector('.h_bottom .gnb');
@@ -177,23 +223,23 @@
 
     //2. gnb에 마우스 오버시 높이가 변하면서 서브가 보이게
     //gnb.addEventListener('mouseenter',function(){
-     // h_bottom.style.height='326px'; //1방법
-      //this.style.height='326px'; //2방법 .gnb에 높이값 설정해놓고 해야. 46으로
-   // });
+    // h_bottom.style.height='326px'; //1방법
+    //this.style.height='326px'; //2방법 .gnb에 높이값 설정해놓고 해야. 46으로
+    // });
 
     //마우스 아웃시 높이가 원대래도 46크기로 작아져야
-   // gnb.addEventListener('mouseleave',function(){
-     // h_bottom.style.height='46px'; //1방법
-      //this.style.height='46px'; //2방법
+    // gnb.addEventListener('mouseleave',function(){
+    // h_bottom.style.height='46px'; //1방법
+    //this.style.height='46px'; //2방법
     //});
 
     // 방법2. 제이쿼리로 2단 메뉴 구현하기
-    $(document).ready(function(){
+    $(document).ready(function () {
 
-      $(gnb).hover(function(){ //마우스 오버시
-        $(h_bottom).stop().animate({'height':'326px'},300);
-      },function(){ //마우스 아웃시
-        $(h_bottom).stop().animate({'height':'46px'},300);
+      $(gnb).hover(function () { //마우스 오버시
+        $(h_bottom).stop().animate({ 'height': '326px' }, 300);
+      }, function () { //마우스 아웃시
+        $(h_bottom).stop().animate({ 'height': '46px' }, 300);
       });
 
       //메인슬라이드 구현
@@ -201,12 +247,12 @@
       $('.mslide > ul li:last-child').insertBefore('.mslide > ul li:first-child');
       //2. 왼쪽으로 -1600px만큼 이동하여 1번이 가운데로 오도록 한다. (1번이 중앙 위치)
       // $('.mslide ul').css('margin-left','-1600px');
-      $('.mslide > ul').css('margin-left','-100%');
+      $('.mslide > ul').css('margin-left', '-100%');
       //3. 좌측으로 움직이는 함수(상대값 기준)
-      function move_left(){
-        //1) 슬라이드 전체목록을 왼쪽으로 1칸 이동하고(5번사진을 맨앞으로 움직였기 때문에 5번사진이 기준 => -3600px이동해야)
+      function move_left() {
+        //1) 슬라이드 전체목록을 왼쪽으로 1칸 이동하고(5번사진을 맨앞으로 움직였기 때문에 5번사진이 기준 => -3600px 이동해야)
         // $('.mslide ul').stop().animate({'margin-left':'-3600px'},500, function(){
-        $('.mslide > ul').stop().animate({'margin-left':'-200%'},500, function(){
+        $('.mslide > ul').stop().animate({ 'margin-left': '-200%' }, 500, function () {
           //2) 맨처음사진(5) 맨뒤로 이동 => 1 >2 >3 >4 >5 순
           $('.mslide > ul li:first-child').insertAfter('.mslide > ul li:last-child');
           //3) 슬라이드 위치 조정
@@ -214,43 +260,88 @@
           //-3600만큼 이동한 다음에(앞의 사진이 1장이 된 후엔), 슬라이드의 상대값 위치를 -1600이 되게 해야함
           //$('.mslide ul').css('margin-left', '-1600px'); //2칸 밀린 위치를 오른쪽으로 다시 이동
           $('.mslide > ul').css('margin-left', '-100%');
+          //console.log($('.mslide > ul li').eq(1).html());
         });
       }
       //4. 우측으로 움직이는 함수 (stop().animate를 넣어야 딱 한번만 실행(클릭하는 동안에는 animate가 딱 한번만 먹힘))
-      function move_right(){
+      function move_right() {
         //$('.mslide ul').stop().animate({'margin-left':'0px'},500,function(){
-        $('.mslide > ul').stop().animate({'margin-left':'0%'},500,function(){
+        $('.mslide > ul').stop().animate({ 'margin-left': '0%' }, 500, function () {
           $('.mslide > ul li:last-child').insertBefore('.mslide > ul li:first-child');
           // $('.mslide ul').css('margin-left', '-1600px');
           $('.mslide > ul').css('margin-left', '-100%');
         });
       }
-      
+
       //5. setInterval객체를 사용하여 매4초마다 함수를 반복실행하여 슬라이드 자동으로 움직이게 한다
       let Timer = setInterval(move_left, 4000);
-
+      //*************************************************************
       //버튼변수
       const l_btn = $('.mslide i.fa-angle-left');
       const r_btn = $('.mslide i.fa-angle-right');
 
       //클릭시 해당 방향의 함수를 호출하여 실행하기
-      l_btn.click(function(){
+      l_btn.click(function () {
         clearInterval(Timer);
         move_right();
       });
-      r_btn.click(function(){
+      r_btn.click(function () {
         clearInterval(Timer);
         move_left();
       });
       //마우스를 빼면 다시 시간을 넣어 자동으로 움직이게 한다
-      $('.mslide i.fas').mouseleave(function(){
+      $('.mslide i.fas').mouseleave(function () {
         clearInterval(Timer); //모든 이벤트에 clearInterval을 넣어줘야 시간이 안살아있음
         Timer = setInterval(move_left, 4000);
       })
+
+      //*************************************************************
+      // 콘트롤 버튼
+      let c_btn = $('.c_btn > ul li');
+      let i = $('.c_btn > ul li').index(); //0
+      let slide = $('.mslide > ul li');
+      //console.log(i);
+
+      // 해당 c_btn 클릭시 해당 순서배열로 html 삽입
+      c_btn.click(function () {
+        clearInterval(Timer);
+        c_btn.removeClass('act');
+        $(this).addClass('act');
+        i = $(this).index(); //0,1,2,3,4
+        console.log(i);
+
+        if (i == 0) {
+          $('.mslide > ul').html(
+            '<li class="slide05"><a href="#" title=""><img src="./images/slide5.jpg" alt="슬라이드5"></a></li><li class="slide01"><a href="#" title=""><img src="./images/slide01.png" alt="슬라이드1"></a></li><li class="slide02"><a href="#" title=""><img src="./images/slide02.png" alt="슬라이드2"></a></li><li class="slide03"><a href="#" title=""><img src="./images/slide3.jpg" alt="슬라이드3"></a></li><li class="slide04"><a href="#" title=""><img src="./images/slide4.jpg" alt="슬라이드4"></a></li>'
+          );
+        } else if (i == 1) {
+          $('.mslide > ul').html(
+            '<li class="slide01"><a href="#" title=""><img src="./images/slide01.png" alt="슬라이드1"></a></li><li class="slide02"><a href="#" title=""><img src="./images/slide02.png" alt="슬라이드2"></a></li><li class="slide03"><a href="#" title=""><img src="./images/slide3.jpg" alt="슬라이드3"></a></li><li class="slide04"><a href="#" title=""><img src="./images/slide4.jpg" alt="슬라이드4"></a></li><li class="slide05"><a href="#" title=""><img src="./images/slide5.jpg" alt="슬라이드5"></a></li>'
+          );
+        } else if (i == 2) {
+          $('.mslide > ul').html(
+            '</li><li class="slide02"><a href="#" title=""><img src="./images/slide02.png" alt="슬라이드2"></a></li><li class="slide03"><a href="#" title=""><img src="./images/slide3.jpg" alt="슬라이드3"></a></li><li class="slide04"><a href="#" title=""><img src="./images/slide4.jpg" alt="슬라이드4"></a></li><li class="slide05"><a href="#" title=""><img src="./images/slide5.jpg" alt="슬라이드5"></a></li><li class="slide01"><a href="#" title=""><img src="./images/slide01.png" alt="슬라이드1"></a>'
+          );
+        } else if (i == 3) {
+          $('.mslide > ul').html(
+            '<li class="slide03"><a href="#" title=""><img src="./images/slide3.jpg" alt="슬라이드3"></a></li><li class="slide04"><a href="#" title=""><img src="./images/slide4.jpg" alt="슬라이드4"></a></li><li class="slide05"><a href="#" title=""><img src="./images/slide5.jpg" alt="슬라이드5"></a></li><li class="slide01"><a href="#" title=""><img src="./images/slide01.png" alt="슬라이드1"></a></li><li class="slide02"><a href="#" title=""><img src="./images/slide02.png" alt="슬라이드2"></a></li>'
+          );
+        } else {
+          $('.mslide > ul').html(
+            '<li class="slide04"><a href="#" title=""><img src="./images/slide4.jpg" alt="슬라이드4"></a></li><li class="slide05"><a href="#" title=""><img src="./images/slide5.jpg" alt="슬라이드5"></a></li><li class="slide01"><a href="#" title=""><img src="./images/slide01.png" alt="슬라이드1"></a></li><li class="slide02"><a href="#" title=""><img src="./images/slide02.png" alt="슬라이드2"></a></li><li class="slide03"><a href="#" title=""><img src="./images/slide3.jpg" alt="슬라이드3"></a></li>'
+          );
+        }
+      })
+      c_btn.mouseleave(function () {
+        clearInterval(Timer);
+        Timer = setInterval(move_left, 4000);
+      })
+
     });
   </script>
 
 
 
 </body>
+
 </html>
