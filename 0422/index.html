@@ -44,11 +44,7 @@
       width: 100%;
     }
 
-    .mslide ul li img {
-      width: 100%;
-    }
-
-    /* 반응형 이미지*/
+    .mslide ul li img {width: 100%;} /* 반응형 이미지*/
 
     /* 좌우버튼 서식 */
     .mslide i.fas {
@@ -248,6 +244,7 @@
       //2. 왼쪽으로 -1600px만큼 이동하여 1번이 가운데로 오도록 한다. (1번이 중앙 위치)
       // $('.mslide ul').css('margin-left','-1600px');
       $('.mslide > ul').css('margin-left', '-100%');
+
       //3. 좌측으로 움직이는 함수(상대값 기준)
       function move_left() {
         //1) 슬라이드 전체목록을 왼쪽으로 1칸 이동하고(5번사진을 맨앞으로 움직였기 때문에 5번사진이 기준 => -3600px 이동해야)
@@ -260,9 +257,12 @@
           //-3600만큼 이동한 다음에(앞의 사진이 1장이 된 후엔), 슬라이드의 상대값 위치를 -1600이 되게 해야함
           //$('.mslide ul').css('margin-left', '-1600px'); //2칸 밀린 위치를 오른쪽으로 다시 이동
           $('.mslide > ul').css('margin-left', '-100%');
-          //console.log($('.mslide > ul li').eq(1).html());
+          console.log($('.mslide > ul li').eq(1).attr('class'));
+          
+          active();
         });
       }
+
       //4. 우측으로 움직이는 함수 (stop().animate를 넣어야 딱 한번만 실행(클릭하는 동안에는 animate가 딱 한번만 먹힘))
       function move_right() {
         //$('.mslide ul').stop().animate({'margin-left':'0px'},500,function(){
@@ -271,6 +271,7 @@
           // $('.mslide ul').css('margin-left', '-1600px');
           $('.mslide > ul').css('margin-left', '-100%');
         });
+        active();
       }
 
       //5. setInterval객체를 사용하여 매4초마다 함수를 반복실행하여 슬라이드 자동으로 움직이게 한다
@@ -336,7 +337,29 @@
         clearInterval(Timer);
         Timer = setInterval(move_left, 4000);
       })
-
+      console.log($('.mslide > ul li').eq(1).attr('class'));
+      
+      //오토플레이시 콘트롤버튼 서식 주는 함수
+      function active(){
+        let current = $('.mslide > ul li').eq(1).attr('class');
+          if(current == 'slide01'){
+            console.log('확인');
+            $('.c_btn > ul li').removeClass('act');
+            $('.c_btn > ul li').eq(0).addClass('act');
+          }else if(current == 'slide02'){
+            $('.c_btn > ul li').removeClass('act');
+            $('.c_btn > ul li').eq(1).addClass('act');
+          }else if(current == 'slide03'){
+            $('.c_btn > ul li').removeClass('act');
+            $('.c_btn > ul li').eq(2).addClass('act');
+          }else if(current == 'slide04'){
+            $('.c_btn > ul li').removeClass('act');
+            $('.c_btn > ul li').eq(3).addClass('act');
+          }else{
+            $('.c_btn > ul li').removeClass('act');
+            $('.c_btn > ul li').eq(4).addClass('act');
+          }
+      }
     });
   </script>
 
